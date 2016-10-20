@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title>UPMH</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>Hola BlisS</h1>
+	<div id="chat">
+	</div>
+	<input id="mensaje" type="text" placeholder="escribe un mensaje">
+	<button id="guardale">Guardar</button>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDGP3og1L73UNP5XrORV7p3K9Pzx8IkMNU",
+    authDomain: "upmh-a7f86.firebaseapp.com",
+    databaseURL: "https://upmh-a7f86.firebaseio.com",
+    storageBucket: "upmh-a7f86.appspot.com",
+    messagingSenderId: "377187794341"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+	var base = firebase.database().ref('upmh');
+
+	$('#guardale').click(function(){
+
+		base.push({
+		nombre:"BlisS",
+		edad:"15",
+		mensaje:$('#mensaje').val(),
+		twitter:"@fixter_"
+		});
+
+	});
+
+	base.on('child_added', function(data) {
+  		$('#chat').append('<br>'+data.val().mensaje);
+	});
+
+
+
+
+
+
+
+
+
+
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
